@@ -2,6 +2,7 @@ import React from 'react';
 import blogpostsData from './blogposts-data';
 import { Link } from 'react-router-dom';
 
+
 function BlogpostsMenu({ blogposts }) {
     return (
     <>
@@ -14,6 +15,8 @@ function BlogpostsMenu({ blogposts }) {
     </>
     );   
 }
+    
+
 
 function BlogPost({ match }) {
     const id = match.params.id;
@@ -22,12 +25,18 @@ function BlogPost({ match }) {
 
     return (
         <>
-            <h1>{blogpost.heading}</h1>
-                {blogpost.blogpost.map((paragraph, key) => (
-                    <p key={key}>{paragraph}</p>
+            <div class="grid_6">
+                <div class="grid_4">
+                    <h1>{blogpost.heading}</h1>
+                    {blogpost.blogpost.map((paragraph, key) => (
+                        <p key={key}>{paragraph}</p>
             ))}
-            <h3>Other blogposts:</h3>
-                <BlogpostsMenu blogposts={otherBlogposts} />     
+            </div>
+                <div class="grid_2 last">
+                    <h3>Other blogposts:</h3>
+                    <BlogpostsMenu blogposts={otherBlogposts} />
+                </div>
+            </div>
         </>
     );		
 }
